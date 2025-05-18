@@ -31,6 +31,12 @@ public class BookController {
         return  ResponseEntity.ok(book);
     }
 
+    @GetMapping("/author/{id}")// TEST URL localhost:8080/api/books/author/1
+    public ResponseEntity<List<BookDTO>> getAllBooksByAuthorId(@PathVariable Long id){
+        return ResponseEntity.ok(bookService.getAllBooksByAuthorId(id));
+    }
+
+
     @PostMapping
     public ResponseEntity<BookDTO> createBook(@RequestBody BookCreateRequestDTO bookCreateRequest){
         BookDTO bookDTO = bookService.createBook(bookCreateRequest);

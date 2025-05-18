@@ -71,5 +71,14 @@ public class BookService {
         Book book = bookRepository.findById(id).orElseThrow( () -> new RuntimeException("No book was found by id" + id) );
         return bookMapper.toDTO(book, authorMapper.toDTO(book.getAuthor()));
     }
+
+    public List<BookDTO> getAllBooksByAuthorId(Long id){
+        Author author = authorRepository.findById(id)
+                .orElseThrow( () -> new RuntimeException("The author was not found with id"));
+        AuthorDTO auhtorDTO = authorMapper.toDTO(author);
+        return bookRepository.findAllByAuthorId(id).stream()
+                .map( book -> bookMapper.toDTO(book, auhtorDTO) )
+                .toList();
+    }
 }
 

@@ -1,27 +1,28 @@
 package lt.javau12.BookApp.DTOs;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lt.javau12.BookApp.entities.Book;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookCreateRequestDTO {
-    private Long bookId;
     private String title;
     private int year;
-    private Long authorId;
+    @JsonProperty("author_id")
+    private Long author_id;
     private String authorFirstname;
     private String authorLastname;
     private AuthorDTO author;
     private Boolean isInStock;
 
-    public Long getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
-    }
+//    public Long getBookId() {
+//        return bookId;
+//    }
+//
+//    public void setBookId(Long bookId) {
+//        this.bookId = bookId;
+//    }
 
     public String getTitle() {
         return title;
@@ -40,11 +41,11 @@ public class BookCreateRequestDTO {
     }
 
     public Long getAuthorId() {
-        return authorId;
+        return author_id;
     }
 
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setAuthorId(Long author_id) {
+        this.author_id = author_id;
     }
 
     public String getAuthorFirstname() {
